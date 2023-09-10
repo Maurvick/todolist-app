@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ITodo } from "./@types/todo";
 import "./App.css";
 import TodoList from "./components/TodoList";
@@ -19,8 +19,8 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  const addTodo = (e: FormEvent) => {
-    e.preventDefault();
+  const addTodo = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     const todoName = todoNameRef.current?.value;
 
@@ -34,7 +34,7 @@ function App() {
     });
 
     // clear all input values in the form
-    e.target.reset();
+    event.target.reset();
   };
 
   const toggleTodo = (id: string, completed: boolean) => {
